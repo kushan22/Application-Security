@@ -1,5 +1,3 @@
 compiler: clang
-before_install:
-  - gem install rake
-  - test -n $CC && unset CC
+
   
