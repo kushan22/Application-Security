@@ -85,3 +85,5 @@ addons:
     packages:
       - cmake-data
       - cmake
+
+script: make
