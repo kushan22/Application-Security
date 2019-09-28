@@ -17,6 +17,8 @@ int main(int argc, char **argv)
         printf("%s\n","Please give two arguments");
         return 0;
     }
+
+    
   
     
     hashmap_t hashtable[HASH_SIZE];
@@ -42,6 +44,7 @@ int main(int argc, char **argv)
     {
         printf("%s\n", "Not Good");
     }
+    return 0;
 }
 
 bool load_dictionary(const char *dictionary_file, hashmap_t hashtable[])
@@ -91,18 +94,16 @@ bool check_word(const char *word, hashmap_t hashtable[])
 {
     
     word = trimwhitespace(word);
+    
     int bucket = hash_function(word);
-    //printf("%d\n",bucket);
+    
     hashmap_t cursor = hashtable[bucket];
-    // printf("%s\n",word);
-    // printf("%zu\n",strlen(word));
+    
+   
     
     while (cursor != NULL)
     {
-        // if (strcmp(word,"other") == 0){
-        //      printf("%s\n",cursor->word);
-        // }
-       
+        
         
         if (strcmp(lower_string(word),cursor->word) == 0)
         {
@@ -111,7 +112,7 @@ bool check_word(const char *word, hashmap_t hashtable[])
         }else{
             cursor = cursor->next;
         }
-        
+    
     }
     
     int bucket1 = hash_function(word);
@@ -125,7 +126,7 @@ bool check_word(const char *word, hashmap_t hashtable[])
         
         if (strcmp(word,cursor1->word) == 0)
         {
-           // printf("Found it %s\n",word);
+          //  printf("Found it %s\n",word);
             return true;
         }else{
             cursor1 = cursor1->next;
@@ -165,13 +166,13 @@ int check_words(FILE *fp, hashmap_t hashtable[], char *misspelled[])
            // printf("%s\n",ptr);
             if (!check_word(ptr, hashtable))
             {
-               // printf("%s\n",ptr);
+                
                 misspelled[i] = ptr;
                // printf("Misspelled word is %s\n",misspelled[i]);
                 num_misspelled++;
                 i++;
             }else{
-                printf("%s\n",ptr);
+                //printf("%s\n",ptr);
             }
             ptr = strtok(NULL, delim);
            
@@ -185,7 +186,9 @@ int check_words(FILE *fp, hashmap_t hashtable[], char *misspelled[])
 char *lower_string(const char *s)
 {
     int c = 0;
-    char * t = strdup(s);
+    char *t = calloc(LENGTH,sizeof(char));
+    
+    memcpy(t,s,sizeof(*s));
     while (t[c] != '\0')
     {
         if (t[c] >= 'A' && t[c] <= 'Z')
@@ -254,8 +257,10 @@ void display(hashmap_t hashtable[]){
 
 char *trimwhitespace(const char *str)
 {
-  char *dummy = strdup(str);
-  char *end;
+  char *dummy = calloc(LENGTH,sizeof(char));
+  memcpy(dummy,str,sizeof(*str));
+  char *end = calloc(LENGTH,sizeof(char));
+  
 
   // Trim leading space
   while(isspace((unsigned char)*dummy)) dummy++;
