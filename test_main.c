@@ -12,8 +12,11 @@ START_TEST(test_dictionary_normal)
     // Here we can test if certain words ended up in certain buckets
     // to ensure that our load_dictionary works as intended. I leave
     // this as an exercise.
+    
+    
 }
 END_TEST
+
 
 START_TEST(test_check_word_normal)
 {
@@ -26,6 +29,7 @@ START_TEST(test_check_word_normal)
     // Test here: What if a word begins and ends with "?
 }
 END_TEST
+
 
 START_TEST(test_check_words_normal)
 {
@@ -48,6 +52,7 @@ START_TEST(test_check_words_normal)
     ck_assert_msg(strcmp(misspelled[2], expected[2]) == 0);
 }
 END_TEST
+
 
 Suite *
 check_word_suite(void)

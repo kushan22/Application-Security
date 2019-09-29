@@ -7,7 +7,7 @@ char *lower_string(char *s);
 char *removePunctuation(char *s);
 char *substring(char *s,int start, int end);
 int main(){
-    char s[] = "?^^**&&!KUSHA'N***;???7665";
+    char s[] = "     KUSHA'N   ??";
     
     char *filteredString = removePunctuation(s);
     printf("%s\n",lower_string(filteredString));

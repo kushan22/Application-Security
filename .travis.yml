@@ -1,7 +1,8 @@
 language: c
-compiler: clang
-before_install:
-  - test -n $CC && unset CC
-  - eval "${MATRIX_EVAL}"
+compiler: gcc
+script:
+  - gcc -Wall -g spell.c dictionary.c -o spell
+  - ./spell
 
-script: make
+after_success:
+  - bash <("Successful")
