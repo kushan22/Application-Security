@@ -2,8 +2,8 @@ language: c
 compiler: gcc
 script:
   - gcc -Wall -g spell.c dictionary.c -o spell
-  - ./spell a_tale_of_two_cities.txt wordlist.txt
-  - gcov spell.c
+  - ./spell test1.txt wordlist.txt
+  
 
 after_success:
   - bash <("Successful")
