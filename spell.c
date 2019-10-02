@@ -10,38 +10,38 @@ char *removePunctuation(char *s);
 char *substring(char *s, int start, int end);
 bool unload(hashmap_t hashtable[]);
 bool unloadMisspelled(char *mispelled[],int num);
-// int main(int argc, char **argv)
-// {
+int main(int argc, char **argv)
+{
 
    
-//     if (argc < 3)
-//     {
-//         printf("%s\n", "Please give two arguments");
-//         return 0;
-//     }
+    if (argc < 3)
+    {
+        printf("%s\n", "Please give two arguments");
+        return 0;
+    }
 
-//     hashmap_t hashtable[HASH_SIZE];
-//     char *misspelled[MAX_MISSPELLED];
-//     load_dictionary(argv[2], hashtable);
+    hashmap_t hashtable[HASH_SIZE];
+    char *misspelled[MAX_MISSPELLED];
+    load_dictionary(argv[2], hashtable);
        
        
-//     FILE *fp;
-//     fp = fopen(argv[1], "r");
-//     int num = check_words(fp, hashtable, misspelled);
-//     printf("%d\n",num);
-//     // for (int i = 0; i < num; i++){
-//     //     printf("%s\n",misspelled[i]);
-//     // }
-//      for (int i = 0; i < num; i++){
-//         printf("%s\n",misspelled[i]);
-//     }
+    FILE *fp;
+    fp = fopen(argv[1], "r");
+    int num = check_words(fp, hashtable, misspelled);
+    printf("%d\n",num);
+    // for (int i = 0; i < num; i++){
+    //     printf("%s\n",misspelled[i]);
+    // }
+     for (int i = 0; i < num; i++){
+        printf("%s\n",misspelled[i]);
+    }
   
-//     if(unload(hashtable)){
-//         printf("%s\n","Successfully Unloaded");
-//     }
-//     if (unloadMisspelled(misspelled,num)){
-//         printf("%s\n","Misspelled Characters successfully Unloaded");
-//     }
+    if(unload(hashtable)){
+        printf("%s\n","Successfully Unloaded");
+    }
+    if (unloadMisspelled(misspelled,num)){
+        printf("%s\n","Misspelled Characters successfully Unloaded");
+    }
    
      
    
@@ -49,8 +49,8 @@ bool unloadMisspelled(char *mispelled[],int num);
 
    
 
-//     return 0;
-// }
+    return 0;
+}
 
 bool load_dictionary(const char *dictionary_file, hashmap_t hashtable[])
 {
